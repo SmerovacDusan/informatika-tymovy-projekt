@@ -5,28 +5,20 @@
 #include <cstdlib>
 #include <string>
 #include <functional>
+#include <atomic>
 
 // zde definovat funkce/třídy/struktury potřebné pro vypsání dráhy
 // přidat potřebné knihovny pomocí #include
 
-void clearConsole()
-{
-#if defined(_WIN32) || defined(_WIN64)
-    ::system("cls");
-#else
-    std::cout << "\033[2J\033[H" << std::flush;
-#endif
-}
 
-void bwl_koule(int iterations)
+void vykresliDrahu(int& prubeh, std::atomic<bool>& run)
 {
-    int prubeh = 0;
+    
     int count = 0;
 
-    while (iterations < 0 || count < iterations)
+    while (run.load())
     {
-        clearConsole();
-
+        std::cout << "\r\033[K";
         int pos; // určí kolik mezer bude před "0"
 
         if (prubeh <= 1) pos = 0;
@@ -37,11 +29,12 @@ void bwl_koule(int iterations)
         else if (prubeh <= 12) pos = 10;
         else pos = 12;
 
-        std::cout << std::string(pos, ' ') << "0" << std::endl;
-
+        std::cout << std::string(pos, ' ') << "0";
+        std::cout.flush();
         std::this_thread::sleep_for(std::chrono::duration<int, std::milli>(75));
-
         prubeh = (prubeh + 1) % 15;
         ++count;
+
+        
     }
 }
