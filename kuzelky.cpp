@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-std::vector<double> hody;
+std::vector<int> hody;
 int pozice = 0;
 int pozice2 = 0;
 
