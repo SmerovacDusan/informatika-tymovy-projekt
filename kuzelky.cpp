@@ -229,6 +229,7 @@ static std::vector<std::string> getDraha2(int pozice2, int pozice) {
     case 0:
     case 14:
         draha2 = getDraha(pozice);
+        hody.push_back(0);
         break;
     case 1:
         if (pozice == 0 || pozice == 14) {
@@ -515,6 +516,7 @@ static std::vector<std::string> getDraha2(int pozice2, int pozice) {
         }
         else {
             draha2 = getDraha(5);
+            hody.push_back(6);
         }
         break;
 
@@ -626,6 +628,7 @@ static std::vector<std::string> getDraha2(int pozice2, int pozice) {
         }
         else if (pozice == 8 || pozice == 9) {
             draha2 = getDraha(pozice);
+            hody.push_back(4);
         }
         else {
             draha2 = getDraha(10);
