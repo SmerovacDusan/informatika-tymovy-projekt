@@ -5,6 +5,14 @@
 #include <iostream>
 #include <cstdlib>
 
+void vypisSkoreZaFrame(int frame_number) {
+    // Vypís aktuálního celkového  skóre s označením framu.
+    
+    std::cout << "\n--- Skore za Frame " << frame_number << " je ";
+    skore(); 
+    std::cout << " ---\n";
+}
+
 int main() {
 	int i = 0;
     while(true)
@@ -65,6 +73,8 @@ int main() {
         system("clear");
         vypisDrahu2(pozice2, pozice);
 
+        //vypis skore za frame
+        vypisSkoreZaFrame(i + 1);
 
 
         i++;
